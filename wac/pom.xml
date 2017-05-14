@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>wac</artifactId>
+	<packaging>ear</packaging>
+	<name>WAC EAR Module</name>
+
+	<parent>
+		<groupId>com.cso.wac</groupId>
+		<artifactId>wac-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../wac-parent</relativePath>
+	</parent>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- set versions for .ear build; during dev all the same -->
+			<dependency>
+				<groupId>com.cso.wac</groupId>
+				<artifactId>wac-ws</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.cso.wac</groupId>
+				<artifactId>wac-w1</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.cso.wac</groupId>
+				<artifactId>wac-w2</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.cso.wac</groupId>
+				<artifactId>wac-wapi</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.cso.wac</groupId>
+				<artifactId>wac-gis</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>			
+
+			<dependency>
+				<groupId>com.cso.wac</groupId>
+				<artifactId>wac-ejb</artifactId>
+				<version>${project.version}</version>
+				<type>ejb</type>
+				<scope>compile</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+
+		<!-- Depend on the constituent parts so packaging happens at changes -->
+		<dependency>
+			<groupId>com.cso.wac</groupId>
+			<artifactId>wac-wapi</artifactId>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>com.cso.wac</groupId>
+			<artifactId>wac-ws</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>com.cso.wac</groupId>
+			<artifactId>wac-w1</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>com.cso.wac</groupId>
+			<artifactId>wac-w2</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>com.cso.wac</groupId>
+			<artifactId>wac-gis</artifactId>
+			<type>war</type>
+		</dependency>		
+
+		<dependency>
+			<groupId>com.cso.wac</groupId>
+			<artifactId>wac-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>wac</finalName>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<version>6</version>
+					<!-- put application .jars into a /lib in the ear -->
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<skinnyWars>true</skinnyWars>
+					<!-- app security 
+						<security> 
+							<security-role id="wac-users"> 
+								<role-name>wac-user-role</role-name> 
+							</security-role> 
+								<security-role id="wac-admins"> 
+							<role-name>wac-admin-role</role-name> 
+							</security-role> 
+						</security> -->
+						
+					<modules>
+						<!-- generate application.xml for the .ear -->
+						<!-- these are the web contexts (.wars) -->
+						<webModule>
+							<groupId>com.cso.wac</groupId>
+							<artifactId>wac-ws</artifactId>
+							<contextRoot>/wac-ws</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>com.cso.wac</groupId>
+							<artifactId>wac-w1</artifactId>
+							<contextRoot>/wac-w1</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>com.cso.wac</groupId>
+							<artifactId>wac-w2</artifactId>
+							<contextRoot>/wac-w2</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>com.cso.wac</groupId>
+							<artifactId>wac-wapi</artifactId>
+							<contextRoot>/wac-wapi</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>com.cso.wac</groupId>
+							<artifactId>wac-gis</artifactId>
+							<contextRoot>/wac-gis</contextRoot>
+						</webModule>						
+					</modules>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+
+</project>
