@@ -1,0 +1,42 @@
+<html data-ng-app="WACDirectives"> 
+<body ng-controller='defaultController'>
+	<slide-in-tools config='shareTools' button-one='shareTools.button1.callback()' button-two='shareTools.button2.callback()'></slide-in-tools>
+</body>
+<link rel="stylesheet" href="/3rd/ico/ionicons.min.css"/>
+<link rel="stylesheet" href="/shr/css/mfb.css"/>  
+<script src="/3rd/ng/1.3.0/angular.js"></script>
+<script>
+	angular.module("WACDirectives", [])
+		.controller("defaultController", ['$scope', function( $scope ) {
+			
+			function peanucle( l ) {
+				alert('peewee' + l);
+			}
+			
+			$scope.shareTools = {
+					button1 : {
+							callback: function() {peanucle('one');},
+							label:"DOIT"
+						},
+					button2 : {
+							callback: function() {peanucle('two');},
+							label:"MOREDONE"
+						}
+					};
+		}])
+		.directive("slideInTools", function() {
+			return {
+				restrict : 'E',
+				scope : {
+					config: '=',
+					'buttonOne': '&',
+					'buttonTwo': '&',
+					'buttonThree': '&'
+				},
+				templateUrl: 'views/tools.html'
+			};
+		});
+
+</script>
+
+</html>

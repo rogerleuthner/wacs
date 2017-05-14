@@ -1,0 +1,60 @@
+  471  iptables-save > firewall-config
+  473  iptables-restore < firewall-config
+  474  service iptables save
+
+
+
+
+
+WHITELISTING
+
+	
+
+iptables -I INPUT -s <allowed_ip> -j ACCEPT #(repeat this line as needed)
+iptables -P INPUT DROP
+
+This will turn your system into a non-existent system for non-allowed computers.
+share|improve this answer
+	
+answered Jun 22 '09 at 22:47
+Kevin M
+1,9011917
+	add comment
+up vote 3 down vote
+	
+
+If you want to allow arbitrary ranges rather than entire subnets, you can use the 'iprange' iptables module:
+
+iptables -P INPUT DROP
+
+iptables -A INPUT -m iprange --src-range 192.168.1.30-50 -j ACCEPT
+
+for example, will allow traffic coming from all machines with addressess between 192.168.1.30 and 192.168.1.50.
+
+If you want to allow incoming and outgoing traffic to the same range of IP's, I'd suggest that you create a specific chain allowing that IPs and targeting all the input and output target to it:
+
+--define the default policies to drop everithing:
+
+iptables -P INPUT DROP
+
+iptables -P OUTPUT DROP
+
+--create the new chain:
+
+iptables -N allowed_ips
+
+--if the source is part of the allowed range, accept
+
+iptables -A allowed_ips -m iprange --src-range 192.168.1.30-50 -j ACCEPT
+
+--if not, return to the caller chain to continue processing
+
+iptables -A allowed_ips -j RETURN
+
+--make all traffic entering and leaving the machine go through our new chain
+
+iptables -A INPUT -j allowed_ips
+
+iptables -A OUTPUT -j allowed_ips
+
+and that's it! of course you may need aditional rules, such as one allowing all traffic from/to the lo interface, etc.

@@ -1,0 +1,50 @@
+<html data-ng-app="WACDirectives"> 
+<body ng-controller='defaultController'>
+	<div share-menu='[{"buttonOne":{"label":"Donuts", "callback":"function() {alert("mumbo jumbo");}"}}]'></div>
+</body>
+<link rel="stylesheet" href="/3rd/ico/ionicons.min.css"/>
+<link rel="stylesheet" href="/shr/css/mfb.css"/>  
+<script src="/3rd/ng/1.3.0/angular.js"></script>
+<script>
+	angular.module("WACDirectives", [])
+		.directive("shareMenu", function() {
+			return function( scope, element, attrs ) {
+				var data = JSON.parse( attrs["shareMenu"] );
+				if ( angular.isArray( data ) ) {
+					
+					// l0 will contain li's generated with the input data, retain a pointer to it 
+					var l0 = angular.element( '<ul>' ).addClass( 'mfb-component__list' );
+				
+					// all levels preceding the l0
+					var l1 = angular.element( '<div>' )
+								.append( angular.element( '<ul>' ).addClass( 'bt mfb-component--tr mfb-slidein' )
+									.append( angular.element( '<li>' ).addClass( 'mfb-component__wrap' )
+										.append( angular.element( '<div>' ).addClass( 'mfb-component__button--main' ).attr( 'data-mfb-label', 'App State Actions' )
+												.append( angular.element( '<div>' ).addClass( 'mfb-component__main-icon--resting ion-wrench' ) ) )
+									)
+									.append( l0 )
+								);
+					
+					for( var i = 0; i < data.length; i++ ) {
+						var lToAdd = angular.element( '<li>' )
+										.append( angular.element( '<div>' ).addClass( 'mfb-component__button--child' ).attr( 'data-mfb-label', 'LABEL' )
+											.append( angular.element( '<button>' ).addClass( 'mfb-component__button--child ion-arrow-graph-up-right' ).attr( 'data-ng-click', data[ i ] ) ) );
+								
+						l0.append( lToAdd );						
+					}
+					
+					// now add it to my generated page
+					element.append( l1 );
+				} else {
+					alert( 'You need an array of actions for the buttons' );
+				}
+			}
+		})
+		.controller("defaultController", function( $scope ) {
+			$scope.stuffToDo = ['eat',
+			                    'other'];
+		});
+
+</script>
+
+</html>

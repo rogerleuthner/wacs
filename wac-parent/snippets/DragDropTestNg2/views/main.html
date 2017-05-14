@@ -1,0 +1,15 @@
+<div class="container-fluid" style="position: absolute;">
+	
+	<div class="well">
+		<div class="heading">Drag and Drop Test</div>
+		<div class="row">
+			<div class="well col-xs-5 drag-region">
+				<div class="drag-item" ng-repeat="item in data.dragitems" draggable data-transfer-data="{{item}}">{{item.name}}</div>
+			</div>
+			<div class="well col-xs-5 drop-region" droppable>drop region
+				<div class="drag-item" ng-repeat="item2 in data.droppeditems" erasable data-transfer-data="{{item2}}">{{item2.name}}</div>
+			</div>
+		</div>
+	</div>
+
+</div>
