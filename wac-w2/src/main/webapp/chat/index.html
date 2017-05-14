@@ -1,0 +1,55 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Chat</title>
+<link rel="stylesheet" href="/wac-w1/shr/css/spinner.css"/>		
+<link rel="stylesheet" href="/wac-w1/3rd/css/bootstrap.min.css"/>		
+<link rel="stylesheet" href="/wac-w1/shr/css/wac.css"/>
+<link rel="stylesheet" href="style.css"/>
+
+</head>
+<body>
+	<div id='init-failure' style='display:none;'></div>
+	<div id='initializing' class='spinner-frame'></div>
+	
+	<div class="container Override">
+		<div class="row fill">
+			<div class="wrapper">
+				<div class="user_list_container">
+					<div>
+						<div class="chat-box-online-head">Users</div>
+					</div>
+					<div class="chat-box-online">
+						<div class="chat-box-online-left" id="list_of_users"></div>
+					</div>
+				</div>
+				<div class="chat_box_container" id="chat_box_container">
+					<div class="chat-box-head">Chat Messages</div>
+					<div class="panel-body chat-box-main" id="chat_data_container"></div>
+				</div>
+				<div class="chat-box-footer">
+					<table style='width:100%;'>
+						<tr>
+						<td >								
+							<button class="btn btn-primary" type="button" onclick="sendData()">Send</button>
+						</td>
+						<td style='width:90%;'>
+							<textarea class="form-control"
+								placeholder="Enter Text Here..." id="message_box_text"
+								onKeyPress="processKeyPress(this,event)"> </textarea>
+						</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src='/wac-w1/3rd/owf-widget__v7.17.0-36761876.js'></script>		
+	<script src='/wac-w1/util/WAC.js'></script>	
+	<script src="/wac-w1/util/WSApi.js"></script>
+	<script src='/wac-w1/shr/SlideInMenu.js'></script>
+	<script src="chat.js"></script>
+</body>
+
+</html>

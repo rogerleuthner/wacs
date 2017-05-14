@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" data-ng-app="channelEditor">
+
+<head>
+	<meta charset="utf-8">
+	<title>WAC Channel Editor</title>
+	<link rel="stylesheet" href="/wac-w1/3rd/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/wac-w1/shr/css/wac.css"/>
+	<link rel="stylesheet" href="/wac-w1/3rd/ico/ionicons.min.css"/>
+	<link rel="stylesheet" href="/wac-w1/shr/css/mfb.css"/>
+    <link rel="stylesheet" href="/wac-w1/3rd/ng/uig-3.1.1/ui-grid.min.css"/>
+	<link rel="stylesheet" href="style.css"/>
+	<style>	
+		.container {
+			padding: 0;
+			margin: 0;
+		}
+		
+		.well {
+			padding-top: 5px;
+			padding-bottom: 10px;
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+	</style>
+<title>Channel Editor</title>	
+</head>
+
+<body>	
+	<div class="container">
+		<div id="errModal" class="modalDialog">
+			<div>
+				<div id='message' style="padding: 5px;">
+				</div>
+				<button class="btn btn-primary" style="float:none;"
+					onclick='document.getElementById("errModal").style.display = "none"'>Dismiss</button>	
+			</div>
+		</div>
+		<div id="confirmModal" class="modalDialog">
+			<div>
+				<div id='cmessage' style="padding: 5px;">
+				</div>
+				<button id="confirmModalButton" class="btn btn-primary" style="float:none;">Yes</button>					
+				<button class="btn btn-primary" style="float:none;"
+					onclick='document.getElementById("confirmModal").style.display = "none"'>No</button>	
+			</div>
+		</div>			
+		<data-ng-view></data-ng-view>
+	</div>
+	
+	<script src="/wac-w1/3rd/ng/1.3.0/angular.min.js"></script>
+	<script src="/wac-w1/3rd/ng/1.3.0/angular-route.min.js"></script>
+	<script src="/wac-w1/3rd/ng/1.3.0/angular-resource.min.js"></script>
+	
+	<script src="/wac-w1/3rd/underscore-min.js"></script>
+	<script src="/wac-w1/3rd/ng/restangular-1.4.0.min.js"></script>
+	<script src="/wac-w1/3rd/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+	<script src="/wac-w1/3rd/ng/uig-3.1.1/ui-grid.min.js"></script>
+	
+	<script src='/wac-w1/3rd/owf-widget__v7.17.0-36761876.js'></script>		
+	<script src="/wac-w1/util/WSApi.js"></script>
+	<script src='/wac-w1/util/WAC.js'></script>	
+	
+	<script src="js/app.js"></script>
+	<script src="js/ChannelController.js"></script>
+	<script src="js/ModalController.js"></script>
+	<script src="js/DragDropDirectives.js"></script>
+
+</body>
+
+
+</html>

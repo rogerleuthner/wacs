@@ -1,0 +1,22 @@
+
+<div id="errModal" class="modalDialog">
+	<div>
+		<div id='message' style="padding: 5px;">
+		</div>
+		<button class="btn btn-primary" style="float:none;"
+			onclick='document.getElementById("errModal").style.display = "none"'>Dismiss</button>	
+	</div>
+</div>
+<div>
+	<div class="well">
+		<tabset>
+			<tab heading="Live Activity">
+				<div id="activityTable" data-ui-grid="activityData" ui-grid-resize-columns data-ui-grid-pagination class="grid"></div>
+			</tab>
+			<tab heading="All History" active="status.showHistory">
+				<div id="historyTable" data-ui-grid="historyData" ui-grid-resize-columns data-ui-grid-pagination class="grid"></div>
+			</tab>
+			<button class="btn btn-primary" data-ng-hide="!status.showHistory" data-ng-click="refreshPage()">Refresh</button>
+		</tabset>
+	</div>
+</div>

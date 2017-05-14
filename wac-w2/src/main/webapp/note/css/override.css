@@ -1,0 +1,55 @@
+/*
+ * ****************************************************************************
+ *  * Source code Copyright 2017 by Roger B. Leuthner
+ *  *
+ *  * This program is distributed in the hope that it will be useful, but 
+ *  * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ *  * Public License for more details.
+ *  *
+ *  * Commercial Distribution License
+ *  * If you would like to distribute this source code (or portions thereof) 
+ *  * under a license other than the "GNU General Public License, version 2", 
+ *  * contact Roger B. Leuthner through GitHub.
+ *  *
+ *  * GNU Public License, version 2
+ *  * All distribution of this source code must conform to the terms of the GNU 
+ *  * Public License, version 2.
+ *  ***************************************************************************
+ */
+
+
+html {
+	overflow: hidden; /* override wac.css */
+}
+body{
+	overflow:hidden;
+	margin-left: 0px;
+}
+.advanced-wrapper {
+	width:100%;
+	margin-top: 0px;
+	margin-left: 0px;
+	float: none;
+}
+
+.editor-container {
+	background:url(/wac-w1/3rd/ico/png/compose-background.png) no-repeat center center fixed;	
+	background-size: 75% 75%;
+	background-color: #fcfaac;
+}
+
+.ql-editor {
+	height: 80vh;
+}
+
+.ql-snow.ql-toolbar {
+	padding: 1px;
+	box-shadow: 0 2px 4px rgba(0, 80, 80, 80.14);	
+	margin-bottom: 6px; /*needed so mozilla shows box shadow*/	
+	
+}
+
+.ql-container {
+	overflow: auto;
+}

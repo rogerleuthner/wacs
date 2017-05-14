@@ -1,0 +1,47 @@
+
+<html lang="en">
+
+<!-- 
+TODO
+containing board should be as large in dimension as the items it contains, and a viewport scrolling over that board
+
+put note id after the name
+ -->
+
+<head>
+	<link rel="stylesheet" href="/wac-w1/shr/css/spinner.css"/>		
+	<link rel="stylesheet" href="/wac-w1/3rd/css/bootstrap.min.css"/>		
+    <link rel="stylesheet" href="/wac-w1/3rd/ng/uig-3.1.1/ui-grid.min.css"/>
+	<link rel="stylesheet" href="/wac-w1/shr/usercontrolpanel/style.css"/>
+	<link rel="stylesheet" href="/wac-w1/shr/css/wac.css"/>
+	<link rel="stylesheet" href="sticky.css"/>
+</head>
+<body>
+	<div id='init-failure' style='display:none;'></div>
+	<div id='initializing' class='spinner-frame'></div>	
+	<div id='info' class='info'></div>	
+	<div id="covering_div" class="blockingcover"></div>
+			
+	<div id="confirmModal" class="modalDialog" style='display:none;'>
+		<div>
+        	<h3>Delete All Your Notes?</h3>		
+			<button class="btn btn-primary" onclick='removeNotes()'>Yes</button>
+			<button class="btn btn-warning" onclick='document.getElementById( "confirmModal" ).style.display = "none"'>Cancel</button>				
+        </div>
+	</div>	
+
+	<div id='wrapper'>
+		<div id='board'ondragover="drag_over(event)" ondrop="drop(event)" >
+		</div>
+	</div>
+</body>
+<script src="/wac-w1/3rd/ng/1.3.0/angular.js"></script>
+<script src="/wac-w1/3rd/ng/1.3.0/angular-route.js"></script>	
+<script src="/wac-w1/3rd/ng/1.3.0/angular-resource.js"></script>
+<script src="/wac-w1/3rd/ng/uig-3.1.1/ui-grid.min.js"></script>
+<script src="/wac-w1/util/WSApi.js"></script>
+<script src='/wac-w1/util/WAC.js'></script>	
+<script src="/wac-w1/shr/SlideInMenu.js"></script>
+<script src="/wac-w1/shr/usercontrolpanel/wcp.js"></script>
+<script src='sticky.js'></script>
+</html>

@@ -1,0 +1,81 @@
+/*
+ * ****************************************************************************
+ *  * Source code Copyright 2017 by Roger B. Leuthner
+ *  *
+ *  * This program is distributed in the hope that it will be useful, but 
+ *  * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ *  * Public License for more details.
+ *  *
+ *  * Commercial Distribution License
+ *  * If you would like to distribute this source code (or portions thereof) 
+ *  * under a license other than the "GNU General Public License, version 2", 
+ *  * contact Roger B. Leuthner through GitHub.
+ *  *
+ *  * GNU Public License, version 2
+ *  * All distribution of this source code must conform to the terms of the GNU 
+ *  * Public License, version 2.
+ *  ***************************************************************************
+ */
+
+.ui-grid {
+	width:95vw;
+	height: 80vh;
+}
+
+.well {
+	padding: 5px;
+	margin: 3px;
+}
+.container {
+	padding: 0;
+	margin: 0;
+}
+.ui-grid-pager-control button input {
+	height: auto;  /*override '26px'*/
+	vertical-align: middle;
+	width: 30px;
+}
+
+.ui-grid-viewport {
+	background:url(/wac-w1/3rd/ico/png/history-book-background.png) no-repeat center center fixed;	
+	background-size: 50% 50%;
+}
+.ui-grid-cell-contents {
+	background:url(/wac-w1/3rd/ico/png/history-book-background.png) no-repeat center center fixed;	
+	background-size: 50% 50%;
+}
+
+html {
+	background:url(/wac-w1/3rd/ico/png/history-book-background.png) no-repeat center center fixed;
+	background-size: 50% 50%;
+}
+.ui-grid-row:nth-child(odd) div[ng-class="red"] {
+	background-color: #f9e3e3;
+}
+
+.ui-grid-row:nth-child(even) div[ng-class="red"] {
+	background-color: #eebbbb;
+}
+
+.ui-grid-row:nth-child(odd) div[ng-class="green"] {
+  background-color: #e7f8e8;
+}
+
+.ui-grid-row:nth-child(even) div[ng-class="green"] {
+  background-color: #c7efca;
+}
+
+.ui-grid-row:nth-child(odd) div[ng-class="yellow"] {
+	background-color: #fcfeda;
+}
+
+.ui-grid-row:nth-child(even) div[ng-class="yellow"] {
+	background-color: #f9fda2;
+}
+
+.btn {
+	font-size: smaller;
+	font-weight: bold;
+	float: right;
+}

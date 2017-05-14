@@ -1,0 +1,61 @@
+<html>
+
+<!-- generate forms here: www.phpform.org/ -->
+
+<head>
+	<link rel="stylesheet" href="/wac-w1/shr/css/dragdrop.css"/>
+	<link rel="stylesheet" href="/wac-w1/3rd/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/wac-w1/shr/css/wac.css"/>	
+	<link rel="stylesheet" href="/wac-w1/shr/css/spinner.css"/>
+	
+	<style>
+		.pictureviewer {
+			background:url(/wac-w1/3rd/ico/png/forms-background.png) no-repeat center center fixed;
+			background-size: 75% 75%;
+		}
+
+		#shareform {
+			text-align: center; 
+			font-weight: bold;
+			border: 1px solid;
+			padding: 10px;
+		}
+
+	</style>		
+	<title>Fast Forms</title>	
+</head>
+
+<body class='nopixannotatable pictureviewer'>		
+	<div id='init-failure' style='display:none;'></div>
+	<div id='initializing' class='spinner-frame'></div>
+
+	<div id="errModal" class="modalDialog">
+		<div>
+        	<h2>Failed to convert the file/link</h2>		
+	        <p><div id='message'></div>
+	        </p>
+			<button class="btn btn-primary" onclick='dismissMess();'>Dismiss</button>
+        </div>	
+	</div>		
+		
+	<div class='wac-droppable dropChute' >
+		Drop Forms (.htm, .html) Here From Asset Manager
+	</div>
+
+	<div id='running'>
+        <p style='opacity: 0.5;'>&nbsp;&nbsp;-or- Choose a currently shared form to collaborate with:</p>
+		<div>
+			<ul id='sharedList'>
+			</ul>
+		</div>
+	</div>
+</body>
+
+<script src='/wac-w1/3rd/owf-widget__v7.17.0-36761876.js'></script>		
+<script src='/wac-w1/util/WSApi.js'></script>
+<script src='/wac-w1/util/WAC.js'></script>	
+<script src='/wac-w1/shr/js/dragdrop.js'></script>
+<script src='/wac-w1/shr/SlideInMenu.js'></script>
+<script src='form.js'></script>
+
+</html>

@@ -1,0 +1,18 @@
+<div class="modal-body">
+	<h1 class="h3" style="text-align: center">Select a User to Edit</h1>
+	
+	<div class="row">
+	<div class="spacer col-xs-3"></div>
+	<div class="user-list col-xs-3">
+		<select class="form-control" data-ng-options="user.userName for user in userlist" 
+				data-ng-model="selectedUser" size="5"></select>
+	<div class="spacer col-xs-3"></div>
+	</div>
+	</div>
+	
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" data-ng-click="ok()">OK</button>
+	<button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
+</div>

@@ -1,0 +1,25 @@
+<div class="modal-body">
+	<h1 class="h3" style="text-align: center">Enter New Password</h1>
+	
+	<div class="row">
+		<div class="{{status.message1.style}} col-xs-6" style="text-align: center">{{ status.message1.text }}</div>
+		<div class="{{status.message2.style}} col-xs-6" style="text-align: center">{{ status.message2.text }}</div>
+	</div>
+	
+	<div class="row">
+		<div class="form-group col-xs-6">
+			<label for="password" class="sr-only">Password</label>
+			<input type="password" class="form-control" id="password" placeholder="Password" data-ng-model="data.initialPwd">
+		</div>
+		<div class="form-group col-xs-6">
+			<label for="retypepassword" class="sr-only">Re-type Password</label>
+			<input type="password" class="form-control" id="retypepassword"	placeholder="Re-type Password" data-ng-model="data.repeatPwd">
+		</div>
+	</div>
+	
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" data-ng-disabled="!status.pwdOK" data-ng-click="ok()">OK</button>
+	<button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
+</div>

@@ -1,0 +1,186 @@
+/*
+ * ****************************************************************************
+ *  * Source code Copyright 2017 by Roger B. Leuthner
+ *  *
+ *  * This program is distributed in the hope that it will be useful, but 
+ *  * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ *  * Public License for more details.
+ *  *
+ *  * Commercial Distribution License
+ *  * If you would like to distribute this source code (or portions thereof) 
+ *  * under a license other than the "GNU General Public License, version 2", 
+ *  * contact Roger B. Leuthner through GitHub.
+ *  *
+ *  * GNU Public License, version 2
+ *  * All distribution of this source code must conform to the terms of the GNU 
+ *  * Public License, version 2.
+ *  ***************************************************************************
+ */
+
+html {
+	overflow: auto; /* allow scrolling if we make the browser too small */
+}
+
+.btn {
+	font-size: .9em;
+	padding: .5em;
+}
+
+.form-group {
+	padding: 5px;
+	margin-bottom: 5px;
+	overflow: hidden;
+}
+
+.form-control {
+	font-size: .9em;
+}
+
+.grid {
+	width: 95%;
+	height: 10em;
+	margin: 1em;
+	font-size: .8em;
+}
+
+.ch-display {
+	font-size: 2em;
+	font-weight: bold;
+	left-padding: 2em;
+}
+
+.input-title {
+	font-size: .9em;
+	font-weight: bold;
+}
+
+.grid-container {
+	border: 1px;
+}
+
+.btn-container {
+	border: 2px;
+	padding: 1em;
+}
+
+.user-list select {
+	list-style-type: none;
+	background: white;
+	font-size: .9em;
+	line-height: 1.1;
+	border: thin solid #dddddd;
+	border-radius: .5em .5em .5em .5em;
+	height: 100px;
+	-webkit-appearance: none;
+}
+
+.username-disp {
+	font-size: 1em;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 2em;
+	padding-bottom: 1em;
+}
+
+.role-select {
+
+}
+
+.role-pill {
+	border-radius: 10px;
+	text-align: center;
+	padding: .1em;
+	margin: .2em;
+	opacity: 0.4;
+	font-size: .8em;
+}
+
+.role-pill.red {
+	border: 1px solid #7d0a0a;
+	background-color: #e81616;
+	color: #ffffff;
+}
+
+.role-pill.orange {
+	border: 1px solid #993300;
+	background-color: #ff6600;
+	color: #ffffff;
+}
+
+.role-pill.yellow {
+	border: 1px solid #aeae0c;
+	background-color: #f0f02b;
+	color: #000000;
+}
+
+.role-pill.green {
+	border: 1px solid #098400;
+	background-color: #19de0b;
+	color: #000000;
+}
+
+.role-pill.blue {
+	border: 1px solid #022587;
+	background-color: #1852f2;
+	color: #ffffff;
+}
+
+.role-pill.violet {
+	border: 1px solid #4107b5;
+	background-color: #6222e2;
+	color: #ffffff;
+}
+
+.role-pill.black {
+	border: 1px solid #000000;
+	background-color: #9f9ba6;
+	color: #ffffff;
+}
+
+.role-pill.selected {
+	background-color: #EEEEEE;
+}
+
+.role-disp {
+	padding-top: 2em;
+	padding-bottom: 2em;
+	border: 2px black dashed;
+}
+
+.user-info {
+	border-left: 2px solid black;
+	border-right: 2px solid black;
+}
+
+.user-info2 {
+	border-right: 2px solid black;
+}
+
+.channel-list {
+	margin: 0 auto;
+	position: relative;
+	width: 300px;
+}
+
+.channel-list select {
+	list-style-type: none;
+	background: white;
+	font-size: .9em;
+	line-height: 1.1;
+	border: thin solid #dddddd;
+	border-radius: .5em .5em .5em .5em;
+	height: 100px;
+	-webkit-appearance: none;
+}
+
+.btn-container .btn {
+	margin: 0.25em;
+}
+
+.modal-warning-message {
+	text-align: center;
+	color: red;
+	font-weight: bold;
+}
+

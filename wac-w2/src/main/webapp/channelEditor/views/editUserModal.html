@@ -1,0 +1,29 @@
+<div class="modalBody">
+	<h1 class="h3" style="text-align: center">Drag New Role for This Channel</h1>
+	
+	<div class="row"><div class="spacer col-xs-12"></div></div>
+	<div class="row">
+		<div class="spacer col-xs-2"></div>
+		<div class="user-info2 col-xs-4">
+			<div class="username-disp">{{user.username}}</div>
+			<div data-droppable class="role-disp">
+				<div data-erasable data-ng-repeat="ur in userroles" class="role-pill {{ur.color}}"
+				data-ng-mouseover="onMouseOver()" data-ng-mouseleave="onMouseOut()"
+				data-ng-style="{opacity: showSel}">{{ur.name}}</div>
+			</div>
+		</div>
+		<div class="role-select col-xs-4">
+			<div data-draggable data-ng-repeat="obj in rolelist" class="role-pill {{obj.color}}"
+			data-ng-mouseover="onMouseOver()" data-ng-mouseleave="onMouseOut()"
+			data-ng-style="{opacity: showSel}">{{obj.name}}</div>
+		</div>
+		<div class="spacer col-xs-2"></div>
+	</div>
+	<div class="row"><div class="spacer col-xs-12"></div></div>
+
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" data-ng-click="ok()">OK</button>
+	<button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
+</div>

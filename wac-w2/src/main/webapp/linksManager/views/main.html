@@ -1,0 +1,12 @@
+<div id="errModal" class="modalDialog">
+	<div>
+       	<h2>Failed to convert the file/link</h2>		
+        <p><div id='message'></div>
+        </p>
+		<button class="btn btn-primary" data-ng-click='dismissMess()'>Dismiss</button>
+       </div>	
+</div>
+<div class="well">
+	<div id="linksGrid" data-ui-grid="gridOptions" data-ui-grid-selection ui-grid-resize-columns data-ui-grid-edit class="grid" droppable></div>
+    <strong>Cell Edited:</strong> {{msg.lastCellEdited}}
+</div>

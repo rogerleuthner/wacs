@@ -1,0 +1,108 @@
+/*
+ * ****************************************************************************
+ *  * Source code Copyright 2017 by Roger B. Leuthner
+ *  *
+ *  * This program is distributed in the hope that it will be useful, but 
+ *  * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ *  * Public License for more details.
+ *  *
+ *  * Commercial Distribution License
+ *  * If you would like to distribute this source code (or portions thereof) 
+ *  * under a license other than the "GNU General Public License, version 2", 
+ *  * contact Roger B. Leuthner through GitHub.
+ *  *
+ *  * GNU Public License, version 2
+ *  * All distribution of this source code must conform to the terms of the GNU 
+ *  * Public License, version 2.
+ *  ***************************************************************************
+ */
+
+/*override control panel*/
+#leftpanel {
+	top: 20px;
+
+}
+
+.blockingcover {
+	z-index: 500; /*> 500 notes will start to be on top*/
+}
+
+.text {
+	width: 100%;
+	height: 100%;
+	background: rgba( 253,253,195, 0.9);
+	box-shadow: 0 4px 8px rgba(0, 80, 80, 80.28);
+	border: 1px solid white;
+	border-radius: 0px 0px 4px 4px;
+	padding: 4px;
+	resize: both;
+	overflow: auto;
+	min-width: 150px;
+	min-height: 50px;
+	cursor: text;
+	transition: height 0.2s, width 0.2s ease;
+	font-size: 125%;
+	font-weight: bold;
+}
+
+.note {
+	/*translate from here to position*/
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	resize: both;
+	z-index: 0;
+	cursor: pointer;
+	transition: left 0.5s, top 0.5s ease;
+}
+
+.title {
+	background-color: #008080;	
+	color: white;
+	border-top: 1px solid white;
+	border-right: 1px solid white;
+	border-left: 1px solid white;	
+	border-radius: 4px 4px 0px 0px;
+	box-shadow: 0 4px 8px rgba(0, 80, 80, 80.28);
+	padding-left: 2px;
+	height: 19px;
+	font-weight: bold;
+
+}
+
+.closeBtn {
+	height: 100%;
+	color: black;
+	float: right;
+}
+
+button {
+	padding: 0px;
+}
+
+#wrapper {
+	height: 100%;
+	width:100%;
+	position:absolute;
+	overflow: auto;
+}
+
+.info {
+	height: 18px;
+	width:100%;
+	background-color: rgba(00,80,80,0.2);
+	color: #005050;
+	text-align: center;
+	box-shadow: 0 2px 4px rgba(0, 80, 80, 80.14);	
+	margin-bottom: 6px; /*needed so mozilla shows box shadow*/	
+}
+		
+#board {
+	height: 1500px;
+	width: 1500px;
+	overflow:none;
+	position: absolute; /*added this to fix mozilla funky drag-image-in-wrong-place-while-dragging*/
+	background:url(/wac-w1/3rd/ico/png/sticky-background.png) no-repeat center center fixed;
+	background-size: 75% 75%;	
+}	

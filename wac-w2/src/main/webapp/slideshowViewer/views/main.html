@@ -1,0 +1,136 @@
+<div id="errModal" class="modalDialog">
+	<div>
+        <h1><div id='message'></div>
+        </h1>
+		<button class="btn btn-primary" data-ng-click='dismissMess()'>Dismiss</button>
+       </div>	
+</div>
+<div class="slide-viewer">
+
+	<!-- "Background image is simply a regular image, which is simple to bind to -->
+	<img class="bg-img" src={{data.slideshow.url}} data-ng-class="{hidden: data.status.slideloading}" notdroppable>
+	<div class="spinner-large" data-ng-class="{hidden: !data.status.slideloading}" style="position: absolute; top: 50%; left: 50%;"></div>
+	
+	<!-- HTML for the slide switching controls (Slideshow Presenter Only!) -->
+	<div class="top-control-container" data-ng-class="{hidden: !data.status.showSlideControls}">
+	<div class="slide-control" data-ng-class="{'not-shown': !data.status.extendSlideControls, shown: data.status.extendSlideControls}">
+		<div class="controls">
+			<button class="btn" aria-label="jump to beginning"
+				data-ng-click="gotoStart()" data-ng-disabled="atStart()">
+				<span class="glyphicon glyphicon-fast-backward"></span>
+			</button>
+			<button class="btn" aria-label="previous slide"
+				data-ng-click="prevSlide()" data-ng-disabled="atStart()">
+				<span class="glyphicon glyphicon-step-backward"></span>
+			</button>
+			<span class="indicator"> Showing Slide 
+				<span class="curr-slide">{{ data.slideshow.currentslide + 1 }}</span> of 
+				<span class="n-slides">{{ data.slideshow.nslides }}</span>
+			</span>
+			<button class="btn" aria-label="next slide"
+				data-ng-click="nextSlide()" data-ng-disabled="atEnd()">
+				<span class="glyphicon glyphicon-step-forward"></span>
+			</button>
+			<button class="btn" aria-label="jump to end"
+				data-ng-click="gotoEnd()" data-ng-disabled="atEnd()">
+				<span class="glyphicon glyphicon-fast-forward"></span>
+			</button>
+		</div>
+	</div>
+	<div class="control-hide">
+		<div class="controls">
+			<button class="btn btn-default" data-ng-click="toggleHiddenTop()">
+				<span class="glyphicon controls-chv"
+				data-ng-class="{'glyphicon-chevron-down': !data.status.extendSlideControls, 
+								'glyphicon-chevron-up': data.status.extendSlideControls}" ></span></button>
+		</div>
+	</div>
+	</div>
+	
+	<!-- HTML for the slideshow selector control (Available to All Users--shows all slideshows in session) -->
+	<div class="side-control-container right-control-container" notdroppable>
+		<div class="slide-control-side slide-control-r" data-ng-class="{'not-shown': !data.status.showViewPanel, shown: data.status.showViewPanel}">
+			<div class="showing-region">
+				<table>
+					<tbody>
+						<tr class="showing-element showing-element-title">
+							<td width="20%">&nbsp</td>
+							<td class="slideout-title" width="60%">Choose a Slideshow to View</td>
+							<td width="20%">&nbsp</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<tbody>
+						<tr class="showing-element" data-ng-repeat="s in data.showing" data-ng-class="{hover: h}" 
+							data-ng-mouseenter="h = true" data-ng-mouseleave="h = false">
+							<td class="show-btn"><button class="btn" data-ng-click="processShowButton(s)" 
+								data-ng-class="{ 'btn-success': getButtonState(s).state === 1,
+												'btn-danger': getButtonState(s).state === 2 || getButtonState(s).state === 6,
+												'btn-info': getButtonState(s).state === 3,
+												'btn-primary': getButtonState(s).state === 4,
+												'btn-warning': getButtonState(s).state === 5 }">
+								{{ getButtonState(s).name }}</button></td>							
+							<td class="show-name">{{ limitString(s.name, s.name.length) }}</td>
+							<td class="show-by">{{ limitString(s.presenter, 11) }}</td>
+							<td class="page-num">
+								<div data-ng-class="{ hidden: s.inSession}">&nbsp;</div>
+								<div data-ng-class="{ hidden: !s.inSession}">{{ s.currentslide + 1 }} of {{ s.nSlides }}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="control-hide-r">
+			<button class="btn btn-default" data-ng-mouseover="toggleHiddenRight()">
+				<span class="glyphicon controls-chv"
+				data-ng-class="{'glyphicon-chevron-left': !data.status.showViewPanel,
+								'glyphicon-chevron-right': data.status.showViewPanel}"></span>
+			</button>
+		</div>
+	</div>
+	
+	<!-- HTML for the slideshow loader control (Available to All Users, 
+		but will only contain slideshows loaded by the current user) -->
+	<div class="side-control-container left-control-container">
+		<div class="slide-control-side slide-control-l" data-ng-class="{'not-shown': !data.status.showQueuePanel, 
+					shown: data.status.showQueuePanel}" droppable>
+			<div class="showing-region">
+				<table>
+					<tbody>
+						<tr class="showing-element showing-element-title">
+							<td width="15%"></td>
+							<td class="slideout-title" width="70%">Drop (.pdf, .ppt, .pptx) Here from Asset Manager to Place in Queue</td>
+							<td width="15%"></td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<tbody>
+						<tr class="showing-element" data-ng-repeat="q in data.queued" data-ng-class="{hover: h2}"
+							data-ng-mouseenter="h2 = true" data-ng-mouseleave="h2 = false">
+							<td class="show-btn"><button class="btn btn-primary" 
+								data-ng-class="{hidden: q.loading}" data-ng-click="publishShow(q)">Publish</button></td>	
+							<td class="loading-img" data-ng-class="{hidden: !q.loading}">
+								<div data-ng-class="{failed: q.failed, spinner: !q.failed}"></div></td>														
+							<td class="show-name" data-ng-class="{hidden: q.loading}">
+								{{ q.loading ? "" : limitString(q.text, q.text.length) }}</td>
+							<td class="show-by" data-ng-class="{hidden: q.loading}">
+								{{ q.loading ? "" : limitString(q.data.inputFile, 11) }}</td>
+							<td class="loading-name" data-ng-class="{hidden: !q.loading}">{{ q.name }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="control-hide-l">
+			<button class="btn btn-default" data-ng-mouseover="toggleHiddenLeft()">
+				<span class="glyphicon controls-chv"
+				data-ng-class="{'glyphicon-chevron-right': !data.status.showQueuePanel,
+								'glyphicon-chevron-left': data.status.showQueuePanel}"></span>
+			</button>
+		</div>
+	</div>
+
+</div>

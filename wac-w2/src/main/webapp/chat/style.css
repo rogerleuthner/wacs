@@ -1,0 +1,203 @@
+/*
+ * ****************************************************************************
+ *  * Source code Copyright 2017 by Roger B. Leuthner
+ *  *
+ *  * This program is distributed in the hope that it will be useful, but 
+ *  * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ *  * Public License for more details.
+ *  *
+ *  * Commercial Distribution License
+ *  * If you would like to distribute this source code (or portions thereof) 
+ *  * under a license other than the "GNU General Public License, version 2", 
+ *  * contact Roger B. Leuthner through GitHub.
+ *  *
+ *  * GNU Public License, version 2
+ *  * All distribution of this source code must conform to the terms of the GNU 
+ *  * Public License, version 2.
+ *  ***************************************************************************
+ */
+
+
+*
+{
+    margin:  0px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: small;  
+}
+
+textarea.form-control {
+	height: 30px;
+	font-size: small;
+}
+
+/* input area */
+.form-control {
+	width: 90%;
+	height: 3em;
+}
+
+#chat_data_container {
+	margin: 3px;
+}
+
+
+.input-group {
+	
+}
+
+
+.Override *:before, .Override *:after
+{
+    /*display: none;*/  /*arrow/diamond thingee pointing to author*/
+}
+
+.container {
+	width: 100%;
+	padding:0px;
+}
+
+.Override.container:before
+{
+    content: '';
+    float: left;
+    height: 100%;
+}
+
+.Override .fill
+{
+    color: #efefef;
+    /*background-color: blue;*/
+    position: relative;
+}
+    .Override .fill:after
+    {
+        content: '';
+        display: block;
+        clear: left;
+    }
+
+.Override .wrapper
+{
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 55px);
+}
+
+.Override .user_list_container
+{
+    float: right;
+    position: static;
+    /*ackground-color: yellow;*/
+    width: 100px;
+    height: 100%;
+    overflow: auto;
+    border:2px solid #A9A9A9;
+    /*border-bottom:2px solid #C5C5C5;*/
+}
+
+.Override .chat_box_container
+{
+    position: static;
+	background:url(/wac-w1/3rd/ico/png/chat-background.png) no-repeat center center fixed;
+	background-size: 50% 50%;
+    overflow: auto;
+    height:100%;
+    border:2px solid #A9A9A9;
+    border-bottom:2px solid #C5C5C5;
+}
+.chat-box-footer
+{
+    border: 2px solid darkgrey;
+}
+.chat-box-head 
+{
+    /*padding: 10px 15px;*/
+    border-bottom: 2px solid darkgrey;
+    background-color: #D8D8D8;
+    color: #000;
+    text-align: center;
+}
+
+.chat-box-online-head 
+{
+    border-bottom: 2px solid darkgrey;
+    background-color: #D8D8D8;
+    color: #000;
+    text-align: left; /*otherwise wrench icon obscures*/
+}
+
+.chat-box-online-left 
+{
+    color: black;
+	margin-left: 3px;
+}
+
+.chat-box-left {
+    width: 98%;
+    height: auto;
+    padding: 2px;
+    border-radius: 5px;
+    position: relative;
+    border: 1px solid #C5C5C5;
+    font-size:12px;
+    color: black;
+}
+.chat-box-left:after {
+    top: 100%;
+    left: 10%;
+    border: solid transparent;
+    content: " ";
+    position: absolute;
+    border-top-color: #C5C5C5;
+    border-width: 10px;
+    margin-left: -15px;
+}
+
+.chat-box-name-left {
+    margin-top: 2px;
+    margin-left: 8%;
+    text-align:left;
+    color:#049E64;
+}
+    .chat-box-name-left img {
+        max-width:40px;
+        border: 2px solid #C5C5C5;
+    }
+
+    .chat-box-right {
+    width: 98%;
+    height: auto;
+    padding: 2px;
+    border-radius: 5px;
+    position: relative;
+    border: 1px solid #C5C5C5;
+    font-size:12px;
+    color: black;
+}
+.chat-box-right:after {
+    top: 100%;
+    right: 10%;
+    border: solid transparent;
+    content: " ";
+    position: absolute;
+    border-top-color: #C5C5C5;
+    border-width: 10px;
+    margin-left: -15px;
+}
+
+.chat-box-name-right {
+    color: #354EA0;
+    margin-top: 2px;
+    margin-right: 10%;
+    text-align:right;
+}
+
+.chat-box-name-right img {
+        max-width:40px;
+        border: 2px solid #354EA0;
+    }
+.chat-box-footer {
+    background-color: #D8D8D8;
+padding: 10px;
+}

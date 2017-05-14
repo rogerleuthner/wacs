@@ -1,0 +1,144 @@
+/*
+ * ****************************************************************************
+ *  * Source code Copyright 2017 by Roger B. Leuthner
+ *  *
+ *  * This program is distributed in the hope that it will be useful, but 
+ *  * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ *  * Public License for more details.
+ *  *
+ *  * Commercial Distribution License
+ *  * If you would like to distribute this source code (or portions thereof) 
+ *  * under a license other than the "GNU General Public License, version 2", 
+ *  * contact Roger B. Leuthner through GitHub.
+ *  *
+ *  * GNU Public License, version 2
+ *  * All distribution of this source code must conform to the terms of the GNU 
+ *  * Public License, version 2.
+ *  ***************************************************************************
+ */
+
+html {
+	overflow: auto; /* allow scrolling if we make the browser window too small */
+}
+.header {
+	font-size: 0.75em;
+	font-weight: bold;
+	/* margin-top: -1.5em;
+	margin-left: -1.5em; */
+}
+
+.role {
+	display: inline-block;
+	margin: 5px;
+	padding: 5px;
+	outline-style: dashed;
+	text-align: center;
+	width: 90%;
+	height: 60px;
+}
+
+.roletext {
+	margin-top: 2px;
+	margin-bottom: -2em;
+	padding: 0;
+	text-align: center;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.choosetext {
+	margin-top: 0px;
+	padding-top: 0px;
+	font-size: 1em;
+	font-weight: bold;
+	text-align: center;
+}
+
+.rolelist {
+	margin-top: 2px;
+	overflow: hidden;
+	outline-style: solid;
+	list-style: none;
+	padding: 0;
+}
+
+.role-image {
+	margin: 0px;
+}
+
+.form-group {
+	padding: 5px;
+	margin-bottom: -5px;
+}
+
+.custom-select select {
+	background: white;
+	padding: 2px;
+	font-size: .9em;
+	line-height: 1.1;
+	border: thin solid #dddddd;
+	border-radius: .5em .5em .5em .5em;
+	height: 100px;
+	-webkit-appearance: none;
+	
+}
+
+.allchannels {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.allchannelslabel {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	font-size: .8em;
+	font-weight: bold;
+}
+
+.assignedchannels {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.assignedchannelslabel {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	font-size: .8em;
+	font-weight: bold;
+}
+
+.user-list {
+	margin: 0 auto;
+	position: relative;
+	width: 300px;
+}
+
+.user-list select {
+	list-style-type: none;
+	background: white;
+	font-size: .9em;
+	line-height: 1.1;
+	border: thin solid #dddddd;
+	border-radius: .5em .5em .5em .5em;
+	height: 100px;
+	-webkit-appearance: none;
+}
+
+.modal-backdrop {
+	bottom: 0;
+}
+
+.pwd-btn {
+	padding: 5px;
+}
+
+.btn {
+	font-size: .9em;
+	padding: .5em;
+}
+

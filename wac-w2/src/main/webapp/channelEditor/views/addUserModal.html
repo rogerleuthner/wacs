@@ -1,0 +1,32 @@
+<div class="modal-body">
+	<h1 class="h3" style="text-align: center">Select a User to Add</h1>
+	<div class="h5 modal-warning-message">{{message}}</div>
+	
+	<div class="row"><div class="spacer col-xs-12"></div></div>
+	<div class="row">
+		<div class="user-list col-xs-4">
+			<select class="form-control" data-ng-options="user.userName for user in userlist" 
+					data-ng-model="selectedUser" data-ng-change="updateSelection()" size="5"></select>
+		</div>
+		<div class="user-info col-xs-4">
+			<div class="username-disp">{{selectedUser.userName}}</div>
+			<div data-droppable class="role-disp">
+				<div data-erasable data-ng-repeat="ur in userroles" class="role-pill {{ur.color}}"
+				data-ng-mouseover="onMouseOver()" data-ng-mouseleave="onMouseOut()"
+				data-ng-style="{opacity: showSel}">{{ur.name}}</div>
+			</div>
+		</div>
+		<div class="role-select col-xs-4">
+			<div data-draggable data-ng-repeat="obj in rolelist" class="role-pill {{obj.color}}" 
+			data-ng-mouseover="onMouseOver()" data-ng-mouseleave="onMouseOut()" 
+			data-ng-style="{opacity: showSel}">{{obj.name}}</div>
+		</div>
+	</div>
+	<div class="row"><div class="spacer col-xs-12"></div></div>
+	
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" data-ng-click="ok()">OK</button>
+	<button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
+</div>

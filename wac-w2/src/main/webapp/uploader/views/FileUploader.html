@@ -1,0 +1,64 @@
+<div class="container" style="padding: 2px; margin-right: 2px; position: absolute;">
+	<div class="well">
+		<!-- inline-block prevents text content from wrapping -->
+		<span
+			style="display: inline-block; margin: 5px; padding: 10px; outline-style: dashed; text-align: center; width: 96%;"
+			flow-drop flow-drag-enter="class='alert-success'"
+			flow-drag-leave="class=''" ng-class="class"> Drag And Drop file(s) here 
+		</span>
+		<span class="btn btn-default" flow-btn>Upload File <i
+			class="glyphicon glyphicon-open-file"></i>
+		</span> 
+		<span class="btn btn-default" flow-btn flow-directory>Upload Folder <i
+			class="glyphicon glyphicon-folder-open"></i>
+		</span>
+	</div>
+
+	<div class="well">
+		<a class="btn btn-small btn-success" ng-click="$flow.resume()">
+			Begin Upload</a>
+		<!-- <a class="btn btn-small btn-danger" ng-click="$flow.pause()">Pause</a>  -->
+		<a class="btn btn-small btn-warning" ng-click="resetProgress( $flow.cancel() );">Cancel/Clear</a>
+		<br>
+		<span class="label label-info">Size: {{$flow.getSize()}}</span> 
+		<span class="label label-info">Is Uploading: {{$flow.isUploading()}}</span>
+		<progressbar class="progress-striped" max="100" value="progs"></progressbar>
+	</div>
+
+	<div class="well" style='font-size: smaller;'>
+		<table class="table table-hover table-bordered table-striped"
+			flow-transfers>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Size</th>
+					<!-- <th>Paused</th> -->
+					<th>Done</th>
+					<!-- <th>Settings</th>  -->
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="file in transfers">
+					<td style='max-width: 1px; word-wrap: break-word;'>{{file.name}}</td>  <!-- TODO FIXME funky style prevents overrun with long filename -->
+					<td>{{file.size}}</td>
+					<!-- <td>{{file.paused}}</td> -->
+					<td>{{(file.isComplete()?(file.error===true?'Error':'True'):'False')}}</td>
+					<!-- 
+						<td>
+							<div class="btn-group">
+								<a class="btn btn-mini btn-warning" ng-click="file.pause()"
+									ng-hide="file.paused"> Pause </a> <a
+									class="btn btn-mini btn-warning" ng-click="file.resume()"
+									ng-show="file.paused"> Resume </a> <a
+									class="btn btn-mini btn-danger" ng-click="file.cancel()">
+									Cancel </a> <a class="btn btn-mini btn-info" ng-click="file.retry()"
+									ng-show="file.error"> Retry </a>
+							</div>
+						</td>
+					-->
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+

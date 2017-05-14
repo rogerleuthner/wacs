@@ -1,0 +1,237 @@
+/*
+ * ****************************************************************************
+ *  * Source code Copyright 2017 by Roger B. Leuthner
+ *  *
+ *  * This program is distributed in the hope that it will be useful, but 
+ *  * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ *  * Public License for more details.
+ *  *
+ *  * Commercial Distribution License
+ *  * If you would like to distribute this source code (or portions thereof) 
+ *  * under a license other than the "GNU General Public License, version 2", 
+ *  * contact Roger B. Leuthner through GitHub.
+ *  *
+ *  * GNU Public License, version 2
+ *  * All distribution of this source code must conform to the terms of the GNU 
+ *  * Public License, version 2.
+ *  ***************************************************************************
+ */
+
+/* configure the slide viewer that will occupy the background */
+/* we are using a div (.slide-viewer) and an image (<img class="bg-img"...>)
+   to create a bootstrap-safe, fully-resizable background slide view */
+.slide-viewer {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	min-width: 300px;
+	height: 100%;
+	border: 1px dashed #888888;
+	background:url(/wac-w1/3rd/ico/png/slideshow-background.png) no-repeat center center fixed;
+	background-size: 75% 75%;
+}
+
+.controls-chv {
+	font-size:16px;
+}
+
+.bg-img {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.slideout-title {
+	font-weight: bold;
+	text-align: center;
+	width:80%;
+}
+
+.btn {
+	padding: .1em;
+	box-shadow: 0 0 4px #008080;
+	background-color: #008080;
+	border: 1px solid white;
+	color:white;
+	margin: 2px;
+}
+.btn-default {
+	color:white;
+	border: 1px solid white;
+}
+
+/* configure the slide-show control bar (top slide-in) */
+
+.top-control-container {
+	width: 100%;
+	position: absolute;
+}
+
+.slide-control {
+	width: 100%;
+	margin-top: 0;
+	transition: all .15s ease-out;
+	background-color: rgba(00, 80, 80, 0.2);
+	box-shadow: 0 0 4px rgba(0, 80, 80, 80.14);
+}
+
+.slide-control.not-shown {
+	margin-top: -20px;  /* is there a better way to do this than hard coding the height? 100% only works for the width... */
+}
+
+.slide-control.shown {
+	margin-top: 0;
+}
+
+.control-hide {
+	width: 100%;
+}
+
+.controls {
+	text-align: center;
+}
+
+.indicator {
+	background-color: rgba(255, 255, 255, .9);
+	font-weight: bold;
+}
+
+/* configure the slideshow view list (right slide-in) */
+
+
+
+.slide-control-side {
+	border-top: 1px solid rgba(00, 80, 80, 0.4);
+	border-right: 3px solid rgba(00, 80, 80, 0.4);
+	border-bottom: 3px solid rgba(00, 80, 80, 0.4);	
+	width: 220px;
+	margin-left: 0;
+	overflow: auto;	
+	transition: all .5s ease-out;	
+	overflow: auto;		
+	background-color: rgba(00, 80, 80, 0.4);	
+}
+
+.slide-control-r {
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;	
+	float: right;
+	max-height: 150px;
+	width: 220px;
+	margin-right: 0;
+}
+
+.slide-control-l {
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;	
+	float: left;
+	margin-left: 0;
+	height: 150px;
+}
+
+.slide-control-r.not-shown {
+	margin-right: -100%;
+}
+
+.slide-control-r.shown {
+	margin-right: 0;
+}
+
+.showing-region {
+	width: 100%;
+}
+
+.showing-element-title {
+	color:white;
+	background:rgba(00,80,80,0.4);
+}
+
+.showing-element {
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: .8em;
+	font-weight: bold;
+	border-bottom: 1px solid #008080;
+	padding: 0;
+	margin: .5em;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	cursor: default;
+	overflow: hidden;
+	width: 100%;
+}
+
+.showing-element.hover {
+	background-color: rgba(00, 80, 80, 0.2);
+	color: white;
+}
+
+
+.control-hide-r {
+	margin-top: 10px;
+	float: right;
+}
+
+.show-name {
+	padding: .1em;
+	width: 40%;
+}
+
+.show-by {
+	padding: .1em;
+	width: 40%;
+}
+
+.page-num {
+	padding: .1em;
+	width: 20%;
+}
+
+.show-btn {
+
+}
+
+.side-control-container {
+	position: absolute;
+	margin-top: 10%;
+	height: 150px;
+	width: 250px;
+	overflow: hidden;	
+}
+.left-control-container {
+	left: 0;
+}
+
+.right-control-container {
+	right: 0;
+}
+
+.slide-control-l.not-shown {
+	margin-left: -100%;
+}
+
+.slide-control-l.shown {
+	margin-left: 0px;
+}
+
+.control-hide-l {
+	margin-top: 10px;
+	float: left;
+}
+
+.loading-name {
+	text-align: left;
+	width: 85%;
+}
+
+.loading-img {
+	width: 15%;
+}
+
+.failed {
+	background: red;
+}
+

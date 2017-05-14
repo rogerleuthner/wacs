@@ -1,0 +1,114 @@
+<div class="container" style="width: 425px; position: absolute;">
+
+	<div class="well">
+		
+		<div class="well">
+			<div class="row">
+			<div class="col-xs-8" style="padding: 0;">
+				<button class="btn btn-primary" data-ng-click="clearData(true)">New User</button>
+				<button class="btn btn-info" data-ng-click="selectUser()">Edit User</button>
+			</div>
+			</div>
+			<div class="row">
+			<div class="col-xs-6"></div>
+			<div class="col-xs-6">
+			<div style="float: right;">
+				<button class="btn btn-success" data-ng-click="saveData()">Save</button>
+				<button class="btn btn-danger" data-ng-click="clearData(true)">Discard</button>
+			</div>
+			</div>
+			</div>
+		</div>
+
+	<!-- Begin Name Information Well -->
+			<div class="well">
+				<div class="header">Name</div>
+				<div class="row">
+					<div class="form-group col-xs-4">
+						<label for="firstname" class="sr-only">First Name</label>
+						<input type="text" class="form-control" id="firstname" placeholder="First Name" 
+								data-notdroppable data-ng-model="userdata.first">
+					</div>
+					<div class="form-group col-xs-4">
+						<label for="middlename" class="sr-only">Middle Name</label>
+						<input type="text" class="form-control" id="middlename"	placeholder="Middle Name" 
+								data-notdroppable data-ng-model="userdata.middle">
+					</div>
+					<div class="form-group col-xs-4">
+						<label for="lastname" class="sr-only">Last Name</label>
+						<input type="text" class="form-control" id="lastname" placeholder="Last Name" 
+								data-notdroppable data-ng-model="userdata.last">
+					</div>
+				</div>
+			</div>
+
+	<!-- Begin Contact Information Well -->
+			<div class="well">
+				<div class="header">Contact Info</div>
+				<div class="row">
+					<div class="form-group col-xs-6">
+						<label for="email" class="sr-only">Email</label>
+						<input type="text" class="form-control" id="email" placeholder="Email" 
+								data-notdroppable data-ng-model="userdata.email">
+					</div>
+					<div class="form-group col-xs-6">
+						<label for="phone" class="sr-only">Phone</label>
+						<input type="tel" class="form-control" id="phone" placeholder="Phone" 
+								data-notdroppable data-ng-model="userdata.phone">
+					</div>
+				</div>
+			</div>
+
+	<!-- Begin Account Information Well -->
+			<div class="well">
+				<div class="header">Account Info</div>
+
+				<div class="row">
+					<div class="col-xs-8" style="padding: 5px;">
+						<div class="row">
+						<div class="form-group col-xs-10">
+							<label for="username" class="sr-only">Username</label>
+							<input type="text" class="form-control" id="username" placeholder="Username" 
+									data-notdroppable data-ng-model="userdata.userName">
+						</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-xs-6">
+							<button class="btn btn-primary pwd-btn" data-ng-click="changePwd()">
+								<span data-ng-if="status.isnewuser">Set Password</span>
+								<span data-ng-if="!status.isnewuser">Change Password</span>
+							</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-4" style="padding: 10px;">
+						<div class="role" data-droppable data-erasable>
+							<img data-ng-show="status.roledefined" src="{{currentrole.img}}" data-ng-dblclick="clearRole()" 
+							width="35" height="35"/>
+							<span data-ng-hide="status.roledefined">Drag User Class Here</span>
+						</div>
+						<div class="roletext" style="padding-bottom: 20px; padding-top: 0px;">
+							<span data-ng-show="status.roledefined">{{currentrole.name}}</span>
+							<span data-ng-hide="status.roledefined">NONE</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			
+		<div class="well">
+			<div class="choosetext">Choose User Class Below</div>
+			<ul class="rolelist">
+			<!-- Using ng-repeat in the <li> elements forces angular to create separate scopes for each
+				element, whereas explicitly creating the table of images by hand results in the same scope
+				for all of them. This way also makes it possible to draw role/image data from the server -->
+			<li class="col-xs-2 role-image" data-ng-repeat="role in roledata">
+				<img data-draggable data-ng-mouseover="onMouseOver()" data-ng-mouseleave="onMouseOut()" 
+					 data-ng-mousedown="onMouseDown()" data-ng-mouseup="onMouseUp()" data-ng-dblclick="onDoubleClick()"
+					 data-ng-style="imageStyle" data-ng-src="{{role.img}}" height="25px" width="25px"/></li>
+			</ul>
+			</div>
+		</div>
+
+</div>
