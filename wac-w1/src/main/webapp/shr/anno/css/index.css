@@ -1,0 +1,232 @@
+/*
+ * ****************************************************************************
+ *  * Source code Copyright 2017 by Roger B. Leuthner
+ *  *
+ *  * This program is distributed in the hope that it will be useful, but 
+ *  * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ *  * Public License for more details.
+ *  *
+ *  * Commercial Distribution License
+ *  * If you would like to distribute this source code (or portions thereof) 
+ *  * under a license other than the "GNU General Public License, version 2", 
+ *  * contact Roger B. Leuthner through GitHub.
+ *  *
+ *  * GNU Public License, version 2
+ *  * All distribution of this source code must conform to the terms of the GNU 
+ *  * Public License, version 2.
+ *  ***************************************************************************
+ */
+
+
+.teInPlace {
+	position: absolute;
+	z-index: 100;
+	padding: 2px !important;
+	border-color: rgba(0, 80, 80, 1) !important;
+	
+}
+
+.teCancelBtn {
+	color: black !important;
+	background-color: white !important;
+}
+
+.annotatable {
+  	overflow-y: hidden;
+  	overflow-x: hidden;
+	background: url('/wac-w2/viewer/picture.jpg') no-repeat center center fixed;
+  	background-size: 100% 100%;
+  }
+  
+.nopixannotatable {
+  	overflow-y: hidden;
+  	overflow-x: hidden;
+	background: no-repeat center center fixed;
+  	background-size: 100% 100%;
+  }  
+  
+  .outsideWrapper {
+      width:100%;
+      height:100%;
+      margin:0px 0px;
+      border:5px solid blue;
+      position:absolute;
+      top:0px;
+      left:0px;
+      right:10px
+  }
+  .insideWrapper {
+      width:100%;
+      height:100%;
+      position:relative;
+  }
+  .coveredImage {
+      height:50%;
+      position:absolute;
+      top:0px;
+      left:0px;
+  }
+  .text2{
+      width:100%;
+      height:30%;
+      position:absolute;
+      top:50%;
+      left:0px;
+      font-size:180%;
+      font-weight:bold;
+  }
+  .coveredForm {
+      /*width:100%;
+      height:30%;*/
+      position:absolute;
+      top:80%;
+      left:0px;
+  }
+  .coveringCanvas {
+      /*width:100%;
+      height:100%;*/
+      position:absolute;
+      top:0px;
+      left:0px;
+		background-color:  rgba(142, 255, 255, .15);
+  }  
+  
+ .overlay
+{
+    visibility: hidden;
+    position: absolute; 
+    left: 0px; 
+    top: 0px; 
+    width:100%; 
+    height:100%; 
+    text-align:center; 
+    z-index: 99999;
+	background-color:  rgba(142, 255, 255, .15);
+    transition: opacity 400ms ease-in;    
+}
+
+.overlayDiv
+{
+    top:0; 
+    left:0; 
+    right:0; 
+    bottom:0; 
+    width:250px; 
+    height:140px;
+    position: absolute;
+
+    overflow:auto;
+    color: white;
+    resize: both;       
+    
+	margin: auto;
+	padding: 5px;
+	border-radius: 10px;
+	background: rgba(0, 80, 80, 0.2) none repeat scroll 0% 0%;
+	border: 1px solid white;
+}
+
+.slider {
+	margin: 10px !important;
+	width: 90% !important;
+}
+
+.numb {
+	margin: 10px !important;
+	width: 50px;
+	color: black;
+}
+
+.color {
+	float:right;
+}
+
+.btn {
+	margin: 5px;
+}
+
+.overlay11 > div {
+    width: 20%;
+    position: relative;
+    margin: 10% auto;
+
+    color: white;
+    
+    overflow: auto;
+    resize: both;       
+    
+	padding: 5px;
+	border-radius: 10px;
+	background: rgba(0, 80, 80, 0.8) none repeat scroll 0% 0%;      
+}
+.overlayDivColor
+{
+    top:0; 
+    left:0; 
+    right:0; 
+    bottom:0; 
+    width:200px; 
+    height:100px;
+    position: absolute;
+    margin: auto;
+    overflow:auto;
+    resize: both;       
+    color: white;
+    
+	padding: 5px;
+	border-radius: 10px;
+	background: rgba(0, 80, 80, 0.8) none repeat scroll 0% 0%;     
+	border: 1px solid white; 
+}
+
+.overlayDivFont
+{
+    top:0; 
+    left:0; 
+    right:0; 
+    bottom:0; 
+    width:180px; 
+    height:95px;
+    position: absolute;
+
+    color: white;
+    
+    overflow: auto;
+    resize: both;       
+    
+	padding: 5px;
+	border-radius: 10px;
+	background: rgba(0, 80, 80, 0.8) none repeat scroll 0% 0%;      
+	
+    margin: auto;
+    border: 1px solid white;	
+}
+
+.select {
+	margin:5px !important;
+}
+
+.overlayDivEdit
+{
+    top:0; 
+    left:0; 
+    right:0; 
+    bottom:0; 
+    width:220px; 
+    height:145px;
+    position: absolute;
+    border-radius: 5px;
+    resize: both;       
+    color: white;
+    
+    overflow: auto;
+    resize: both;       
+    
+	padding: 5px;
+	border-radius: 10px;
+	background: rgba(0, 80, 80, 0.8) none repeat scroll 0% 0%;      
+	
+    margin: auto;
+    border: 1px solid white;
+}

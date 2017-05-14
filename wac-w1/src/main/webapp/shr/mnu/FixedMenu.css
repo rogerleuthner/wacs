@@ -1,0 +1,61 @@
+/*
+ * ****************************************************************************
+ *  * Source code Copyright 2017 by Roger B. Leuthner
+ *  *
+ *  * This program is distributed in the hope that it will be useful, but 
+ *  * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ *  * Public License for more details.
+ *  *
+ *  * Commercial Distribution License
+ *  * If you would like to distribute this source code (or portions thereof) 
+ *  * under a license other than the "GNU General Public License, version 2", 
+ *  * contact Roger B. Leuthner through GitHub.
+ *  *
+ *  * GNU Public License, version 2
+ *  * All distribution of this source code must conform to the terms of the GNU 
+ *  * Public License, version 2.
+ *  ***************************************************************************
+ */
+
+
+/*
+css rules for the draw helper components
+*/
+
+div.button {
+
+}
+
+div.divider {
+	height: 5px;
+	background-color: black;
+}
+
+.fixedMenus > .button {
+    padding: 2px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    border-radius: 4px;    
+    /*background-color: rgba(48, 51, 54, 0.4);*/
+}
+
+.fixedMenus > .button:hover {
+	background: #800000;
+	box-shadow: 0px 0px 8px #800000;
+}
+
+
+#fixedMenus {
+    position: absolute;
+    display: inline;
+    background: rgba(00, 80, 80, 0.8);
+	bottom: 30px;
+	right: -2px;
+	margin: 4px;
+	padding: 2px;
+    border-radius: 7px;
+    box-sizing: unset !important;  /* in case bootstrap css is included */
+	box-shadow: 0 0 4px rgba(0, 80, 80, 80.14);
+}
+

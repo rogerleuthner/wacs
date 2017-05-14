@@ -1,0 +1,14 @@
+<div id="leftpanel">
+	<div id='cpEar'></div>
+	<p id="verticaltext" class="rotate">Collab Control Panel</p>
+	<div id="leftpanel_inner" class="container leftpanel row" >
+		<div class="well" style="position: absolute">
+			<div id="userControlPanelGrid" data-ui-grid="gridOptions"
+				data-ui-grid-selection class="grid"></div>
+		</div>
+	</div>
+
+	<button id="req_control" ng-disabled="requestButtonDisabled" class="btn btn-primary" enabled data-ng-click="request()">Request Control</button>
+    <button id="rel_control" ng-disabled="releaseButtonDisabled" class="btn btn-primary" data-ng-click="release()">Release</button>      
+    <button id="assign_control" ng-disabled="assignButtonDisabled" class="btn btn-primary" data-ng-click="assign()">Assign</button> 
+</div>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>WAC GIS</title>
+
+<style>
+@import url(/wac-w1/shr/css/spinner.css);  
+</style>
+
+</head>
+<body>
+	<div id='init-failure' style='display:none;'></div>
+	<div id='initializing' class='spinner-frame'></div>			
+	<button onclick='removeOne();'>Remove One</button>
+	<button onclick='FixedMenu.show();'>Show</button>
+	<button onclick='FixedMenu.hide();'>Hide</button>		
+</body>
+
+<script src='/wac-w1/3rd/owf-widget__v7.17.0-36761876.js'></script>	
+<script src="/wac-w1/util/WSApi.js"></script>
+<script src="/wac-w1/util/WAC.js"></script>
+<script src='/wac-w1/shr/mnu/FixedMenu.js'></script>
+<script>
+
+	function initApp(  ) {
+		WAC.sys.initApp( 'menuTest', '*', function() {	
+
+			FixedMenu.build();
+			/* http://ngiriraj.com/pages/demo/glyphicons.php */
+			FixedMenu.setButtons(
+						[ 
+						 	{
+								id:'Polyline', 
+								icon: '/wac-w1/shr/mnu/img/glyphicons_097_vector_path_line.png', 
+								tooltip: 'Click to start drawing a 2D polyline', 
+								handler: function() {
+					            			alert('polyline');
+					            		}
+				   		 	},{
+								id:'polygon', 
+								icon: '/wac-w1/shr/mnu/img/glyphicons_096_vector_path_polygon.png', 
+								tooltip: 'Click to start drawing a 2D polygon', 
+								handler: function() {
+					            			alert('polygon');
+					            		}
+				   		 	},{
+								id:'extent', 
+								icon: '/wac-w1/shr/mnu/img/glyphicons_094_vector_path_square.png', 
+								tooltip: 'Click to start drawing an Extent', 
+								handler: function() {
+					            			alert('extent');
+					            		}
+				   		 	},{
+								id:'circle', 
+								icon: '/wac-w1/shr/mnu/img/glyphicons_095_vector_path_circle.png', 
+								tooltip: 'Click to start drawing a Circle', 
+								handler: function() {
+					            			alert('circle');
+					            		}
+				   		 	},{
+								id:'marker', 
+								icon: '/wac-w1/shr/mnu/img/glyphicons_242_google_maps.png', 
+								tooltip: 'Click to start drawing a 2D marker', 
+								handler: function() {
+					            			alert('marker');
+					            		}
+				   		 	} 			   		 
+				   		 ]
+			);	
+			
+			FixedMenu.addSeparator();
+			
+			FixedMenu.addButton( 'marker', '/wac-w1/shr/mnu/img/glyphicons_242_google_maps.png', 'Click to start drawing a 2D marker', 
+								function() {
+			            			alert('marker');
+			            		}
+   		 	);
+			
+
+			
+		});
+	}	
+	
+	function removeOne( ) {
+		FixedMenu.removeButtonById( 'circle' );
+	}
+	
+	
+	WAC.sys.WACInit( initApp, null, null );
+	
+</script>
+
+</html>

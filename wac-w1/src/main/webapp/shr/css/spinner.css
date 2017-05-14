@@ -1,0 +1,107 @@
+/*
+ * ****************************************************************************
+ *  * Source code Copyright 2017 by Roger B. Leuthner
+ *  *
+ *  * This program is distributed in the hope that it will be useful, but 
+ *  * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ *  * Public License for more details.
+ *  *
+ *  * Commercial Distribution License
+ *  * If you would like to distribute this source code (or portions thereof) 
+ *  * under a license other than the "GNU General Public License, version 2", 
+ *  * contact Roger B. Leuthner through GitHub.
+ *  *
+ *  * GNU Public License, version 2
+ *  * All distribution of this source code must conform to the terms of the GNU 
+ *  * Public License, version 2.
+ *  ***************************************************************************
+ */
+
+.spinner {
+	height: 24px;
+	width: 24px;
+	position: relative;
+	margin: 0 auto;
+	animation-duration: 1s;
+	animation-name: rotate;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	
+}
+
+.spinner-large {
+	height: 76px;
+	width: 76px;
+	position: relative;
+	margin: 0 auto;
+	animation-duration: 1s;
+	animation-name: rotate;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+.spinner-frame {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	margin: 0 auto;
+	display:block;
+	z-index:9999;
+	animation-duration: 1s;
+	animation-name: rotate;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+.spinner::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -10px;
+	margin-left: -10px;
+	height: 16px;
+	width: 16px;
+	border-top: 4px solid rgba(80,0,0,1);
+	border-right: 4px solid transparent;
+	border-radius: 50%;
+}
+
+.spinner-large::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -30px;
+	margin-left: -30px;
+	height: 48px;
+	width: 48px;
+	border-top: 8px solid rgba(80,0,0,1);
+	border-right: 8px solid transparent;
+	border-radius: 50%;
+}
+
+.spinner-frame::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -60px;
+	margin-left: -60px;
+	height: 96px;
+	width: 96px;
+	border-top: 8px solid rgba(80,0,0,1);
+	border-right: 8px solid transparent;
+	border-radius: 50%;
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	
+	to {
+		transform: rotate(360deg);
+	}
+}
