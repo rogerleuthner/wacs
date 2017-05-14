@@ -1,0 +1,24 @@
+<html>		
+
+	<!-- Init WAC.js and EventSource/storage-based inter and intra-console eventing.
+		Requires: initialized WAC.js object, OWF, EventSource and localStorage (@see WACinit.js)
+		
+		1) If running in OWF, get the logged user name and set it into the WAC data
+		2) Set up console-wide EventReceiver subscribing to all events defined in WAC.ALL_EVENTS
+		
+		May throw exceptions; if so, the setup for OWF and Events probably failed.	
+	 -->
+
+	<head>
+		<script src='/wac-w1/3rd/owf-widget__v7.17.0-36761876.js'></script>	
+		<script src="/wac-w1/util/WAC.js"></script>
+		<script>
+			<!-- for some reason, this works to suppress console errors in some apps, but not others ! -->
+			owfdojo.config.dojoBlankHtmlUrl = '/wac-w1/util/blank.html';	
+		</script>
+		
+	</head>														
+
+	<body>
+	</body>
+</html>

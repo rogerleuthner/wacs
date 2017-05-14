@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"  
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"  
+      version="3.0"> 
+ 
+ 	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Enforce SSL for all parts</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection> 	
+ 		<user-data-constraint>
+ 			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+ 		</user-data-constraint>
+ 	</security-constraint>
+   
+ 
+ 	<!-- sample filter for those users with at least WAC_CONTROLLER -->
+	<filter>
+		<filter-name>JWTAuthenticationFilter_WAC_CONTROLLER</filter-name>
+		<filter-class>com.cso.wac.web.JWTAuthenticationFilter</filter-class>
+		<async-supported>true</async-supported> <!-- don't really use, but required since preceded EventReceiver and all in chain must be async -->
+	    <init-param>
+	        <param-name>roles-allowed</param-name>
+	        <param-value>WAC_CONTROLLER, WAC_SUPER</param-value>
+	    </init-param>		
+	</filter> 
+	
+	<!-- filter for any basic user -->
+	<filter>
+		<filter-name>JWTAuthenticationFilter_ROLE_USER</filter-name>
+		<filter-class>com.cso.wac.web.JWTAuthenticationFilter</filter-class>
+		<async-supported>true</async-supported>
+	    <init-param>
+	        <param-name>roles-allowed</param-name>
+	        <param-value>ROLE_USER</param-value>
+	    </init-param>		
+	</filter> 
+	
+	<!-- USER role protection for everything. 
+	<filter-mapping>
+		<filter-name>JWTAuthenticationFilter_ROLE_USER</filter-name>	
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> 		
+ -->	
+ 	<error-page>
+ 		<error-code>404</error-code>
+ 		<location>/error404.html</location>
+ 	</error-page>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<!-- CORS -->
+	  <filter>
+	    <filter-name>CORS</filter-name>
+	    <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+	
+	    <init-param>
+	        <param-name>cors.allowGenericHttpRequests</param-name>
+	        <param-value>true</param-value>
+	    </init-param>
+	
+	    <init-param>
+	        <param-name>cors.allowOrigin</param-name>
+	        <param-value>*</param-value>
+	    </init-param>
+	
+	    <init-param>
+	        <param-name>cors.allowSubdomains</param-name>
+	        <param-value>false</param-value>
+	    </init-param>
+	
+	    <init-param>
+	        <param-name>cors.supportedHeaders</param-name>
+	        <param-value>*</param-value>
+	    </init-param>
+	
+	    <init-param>
+	        <param-name>cors.supportsCredentials</param-name>
+	        <param-value>true</param-value>
+	    </init-param>
+	
+	    <init-param>
+	        <param-name>cors.maxAge</param-name>
+	        <param-value>3600</param-value>
+	    </init-param>
+	
+	</filter>
+	
+	<filter-mapping>
+	    <filter-name>CORS</filter-name>
+	    <url-pattern>*</url-pattern>
+	</filter-mapping>
+  		
+</web-app>

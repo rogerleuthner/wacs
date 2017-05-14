@@ -1,0 +1,65 @@
+
+<html>
+	<head>
+		<link rel="stylesheet" href="/wac-w1/3rd/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="/wac-w1/shr/css/wac.css"/>    	       		
+		<script src='/wac-w1/3rd/owf-widget__v7.17.0-36761876.js'></script>		
+		<script src="/wac-w1/util/WSApi.js"></script>
+		<script src='/wac-w1/util/WAC.js'></script>	
+		<style>
+		body {
+			overflow: hidden;
+		}
+		</style>
+		<title>Console Status</title>	
+     </head>
+<body>
+	<div id='init-failure' style='display:none;'></div>
+	<div class='well' style='font-size: smaller; padding: 5px;'>
+		<span style="white-space: nowrap;">
+			<label for="ch">Channel</label> 
+			<input id='ch' type='text' size='12' disabled></input>
+		</span>
+		<span style="white-space: nowrap;">				
+			<label for="user">User</label> 
+			<input id='user' type='text' size='12' disabled></input>
+		</span>					
+		<span style="white-space: nowrap;">
+			<label for="version">Version</label> 
+			<input id='version' type='text' size='10' disabled></input>		
+		</span>
+		<span style="white-space: nowrap;">					
+			<label for="jwt">Token</label> 
+			<input id='jwt' type='text' size='13' disabled></input>
+		</span>					
+	</div>
+		
+</body>
+<script>
+
+	function setup( d ) {
+		d.getElementById( "jwt" ).value = WAC.sys.getJWT();
+		
+		var request = new XMLHttpRequest();
+		request.open("GET", "/wac-wapi/user/me", true);
+		request.onreadystatechange = function(e) {
+			if ( request.readyState === 4 ) {
+				if ( request.status === 200 ) {
+					var o = JSON.parse( request.responseText );
+					d.getElementById( "ch" ).value = o.channelName;
+					d.getElementById( "user" ).value = o.userName;
+					d.getElementById( "version" ).value = o.version;
+				}
+			}
+		};
+		request.send();			
+	}
+	
+	WAC.sys.WACInit( 
+			function( ) {
+				setup( window.document );		
+			}, 
+			null, null );
+	
+</script>
+</html>

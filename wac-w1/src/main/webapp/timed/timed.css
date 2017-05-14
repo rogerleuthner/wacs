@@ -1,0 +1,102 @@
+/*
+ * ****************************************************************************
+ *  * Source code Copyright 2017 by Roger B. Leuthner
+ *  *
+ *  * This program is distributed in the hope that it will be useful, but 
+ *  * WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ *  * Public License for more details.
+ *  *
+ *  * Commercial Distribution License
+ *  * If you would like to distribute this source code (or portions thereof) 
+ *  * under a license other than the "GNU General Public License, version 2", 
+ *  * contact Roger B. Leuthner through GitHub.
+ *  *
+ *  * GNU Public License, version 2
+ *  * All distribution of this source code must conform to the terms of the GNU 
+ *  * Public License, version 2.
+ *  ***************************************************************************
+ */
+
+.rowbtn {
+    font-weight: 700;
+    padding: 2px 2px;
+    border: 1 none;
+    letter-spacing: 1px;
+    margin: 1px !important;
+}
+
+.ui-grid-row, .ui-grid-cell {
+	height: 20px !important;
+}
+
+.ui-grid-viewport {
+	background:url(/wac-w1/3rd/ico/png/skip-backward-background.png) no-repeat center center fixed;	
+	background-size: 75% 75%;
+}
+.ui-grid-cell-contents {
+	background:url(/wac-w1/3rd/ico/png/skip-backward-background.png) no-repeat center center fixed;	
+	background-size: 75% 75%;
+	padding: 1px !important;
+}
+.ui-grid-header-cell-label {
+	padding: 3px;
+}
+
+.ui-grid {
+	width:100%;
+	height: 90vh;
+}
+
+.grid {
+	height: 75vh;
+}
+
+html {
+	background:url(/wac-w1/3rd/ico/png/skip-backward-background.png) no-repeat center center fixed;	
+	background-size: 75% 75%;	
+}
+
+.btn {
+	margin: 5px;
+}
+
+.well {
+	padding: 0px;
+	margin: 0px;
+
+}
+
+.modal-body {
+	padding: 5px;
+	padding-top: 2px;
+}
+
+.textin {
+	margin: 5px;
+	margin-left: 2px;
+}
+
+.snaplabel {
+	/*float:right;*/
+	padding: 7px;
+	padding-right:2px;
+}
+
+.snapname {
+	margin: 3px;
+	border:  1px solid #008080;
+	font-size: 1.25em;
+	float: right;
+	margin-right: 40px; /* avoid the app control */
+	padding-left: 3px;
+}
+
+.xsnapname {
+	border:  2px solid #008080;
+	font-size: 1.25em;
+	padding-left: 3px;
+	width: 60%;
+	height: 20px;
+}
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Form Page</title>
+</head>
+<body>
+<h1>Upload a File</h1>
+
+	<form action="https://localhost:9443/wac-wapi/gis/newimage" method="post" enctype="multipart/form-data">
+		<p>
+			Select a file : <input type="file" size="64" name="targetfile"/>
+		</p>
+		<input type="submit" value="Upload It" />
+		<input id='jwt' name="jwt" type="text" value="(not logged in)"/>
+	</form>
+
+</body>
+
+<script src='/wac-w1/3rd/owf-widget__v7.17.0-36761876.js'></script>		
+<script src="/wac-w1/util/WSApi.js"></script>
+<script src='/wac-w1/util/WAC.js'></script>	
+
+<script>
+
+// just enough to complete authorization
+WAC.sys.WACInit( function() {
+	WAC.sys.initApp( 'fileupload', '*', 
+			function(id) {
+				document.getElementById( 'jwt' ).value=WAC.sys.getJWT();
+			});
+}, null, null );
+
+
+</script>
+</html>

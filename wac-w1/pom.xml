@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>wac-w1</artifactId>
+	<name>WAC Web 1</name>
+	<packaging>war</packaging>
+
+	<parent>
+		<groupId>com.cso.wac</groupId>
+		<artifactId>wac-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../wac-parent</relativePath>
+	</parent>
+
+	<build>
+		<finalName>wac-w1</finalName>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+			
+			<plugin>
+
+				<groupId>com.samaxes.maven</groupId>
+				<artifactId>minify-maven-plugin</artifactId>
+				<version>1.7.4</version>
+				<executions>
+					<execution>
+						<id>default-minify</id>
+						<configuration>
+							<jsSourceDir>shr/anno/js</jsSourceDir>
+							
+							<!-- must be in a suitable order, so can't just include -->
+
+							<jsSourceFiles>							
+								<jsSourceFile>ContextMenu.js</jsSourceFile>
+								<jsSourceFile>Base.js</jsSourceFile>
+								<jsSourceFile>command.js</jsSourceFile>
+								<jsSourceFile>tgobject.js</jsSourceFile>
+								<jsSourceFile>tcompositeobject.js</jsSourceFile>
+								<jsSourceFile>tcontainerobject.js</jsSourceFile>
+								<jsSourceFile>tcanvas.js</jsSourceFile>
+								<jsSourceFile>tline.js</jsSourceFile>
+								<jsSourceFile>trect.js</jsSourceFile>
+								<jsSourceFile>dialogs.js</jsSourceFile>																				
+							</jsSourceFiles>
+							
+							<!-- 
+<script src="/wac-w1/shr/anno/js/ContextMenu.js"></script>
+<script src="/wac-w1/shr/anno/js/Base.js"></script>
+<script src="/wac-w1/shr/anno/js/command.js"></script>
+<script src="/wac-w1/shr/anno/js/tgobject.js"></script>
+<script src="/wac-w1/shr/anno/js/tcompositeobject.js"></script>
+<script src="/wac-w1/shr/anno/js/tcontainerobject.js"></script>
+<script src="/wac-w1/shr/anno/js/tcanvas.js"></script>
+<script src="/wac-w1/shr/anno/js/tline.js"></script>
+<script src="/wac-w1/shr/anno/js/trect.js"></script>
+<script src="/wac-w1/shr/anno/js/dialogs.js"></script>														
+							 -->
+							
+														
+							<jsFinalFile>cat.js</jsFinalFile>
+						</configuration>
+						<goals>
+							<goal>minify</goal>
+						</goals>
+					</execution>
+				</executions>			
+			
+			
+			</plugin>
+			
+			<!-- copy the minified anno js into the source directory so it can be picked up during dev/test -->
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-antrun-plugin</artifactId>
+			    <version>1.1</version>
+			    <executions>
+			        <execution>
+			            <phase>test</phase>
+			            <goals>
+			                <goal>run</goal>
+			            </goals>
+			            <configuration>
+			                <tasks>
+			                    <copy file="${basedir}/target/wac-w1/shr/anno/js/cat.min.js" tofile="${basedir}/src/main/webapp/shr/anno/js/cat.min.js"/>
+			                    </tasks>
+			                </configuration>
+			            </execution>
+			        </executions>
+			</plugin>
+			
+		</plugins>
+
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>wac-ejb</artifactId>
+			<version>${project.version}</version>
+			<type>ejb</type>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<description>Contains 
+- Basic static resources for interfacing with OWF
+- 3rd party static content
+- Session content (channel and session)
+- Fundamental components (channel collaboration &amp; control protocol)</description>
+</project>

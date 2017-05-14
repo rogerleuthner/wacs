@@ -1,0 +1,47 @@
+<div id="errModal" class="modalDialog">
+	<div>
+		<div id='message' style="padding: 5px;">
+		</div>
+		<button class="btn btn-primary" style="float:none;"
+			onclick='document.getElementById("errModal").style.display = "none"'>Dismiss</button>	
+	</div>
+</div>
+
+<div>
+	<div class="well">
+		<div style='display:inline-block;'>
+		<label class='snaplabel' for='currentsnap'>Showing Snapshot:&nbsp;</label>
+		<input id="currentsnap" class="snapname" readonly type="text" data-ng-model="pager.currentsnap" size="16"/>
+		</div>	
+		<div style='display:inline-block;'>
+ 		<label style='padding: 2px;' for="name">New Snapshot: </label>
+		<input id="name" class="textin" type="text" data-ng-model='pager.snapshotName' placeholder='default name' size='16'/>	
+		<input id="desc" class="textin" type="text" data-ng-model='pager.snapshotDesc' placeholder='default description' size='32'/>
+		</div>
+
+<!--
+		<button type="button" class="btn btn-primary" data-ng-click="collabSnapshot()">Create Collab App Channel Snapshot</button> 
+		<input id='currentValue' type='text' data-ng-model='pager.currentValue' size='20'/>
+		<input id='direction' type='text' data-ng-model='pager.direction' size='20'/>	
+-->			
+		<div id="timedGrid" data-ui-grid="gridOptions" data-ui-grid-selection>
+		</div>		
+	</div>
+</div>
+<!-- 
+<div id="footer">
+	<fieldset>
+		<input id='sliderControl' value='200' type='range' min='0' max='500' step='100' list='scale' data-ng-model='pager.currentValue'>		
+			<datalist id="scale">
+		
+				<option>0</option>
+				<option>100</option>
+				<option>200</option>
+				<option>300</option>
+				<option>400</option>
+		
+			</datalist>
+		</input>
+	</fieldset>
+</div>
+ -->

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!--
+Copyright 2011 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+Author: Eric Bidelman (ericbidelman@chromium.org)
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet" type="text/css">
+
+<title>Photobooth</title>
+<style>
+
+#monitor {
+  /*-webkit-transform: scaleX(-1);*/
+  height: 300px;
+  /*-webkit-box-reflect: below 20px -webkit-linear-gradient(top, transparent, transparent 80%, rgba(255,255,255,0.2));*/
+}
+#live {
+  position: absolute;
+  z-index: 1;
+  color: white;
+  font-weight: 600;
+  font-family: Arial;
+  font-size: 16pt;
+  right: 35px;
+  top: 20px;
+  text-shadow: 1px 1px red;
+  letter-spacing: 1px;
+}
+#live:before {
+  content: '';
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background: red;
+  position: absolute;
+  left: -20px;
+  margin-top: 5px;
+}
+#gallery img {
+  position: absolute;
+  z-index: -1;
+  height: 75px;
+}
+#gallery img {
+  float: left;
+  height: 75px;
+}
+.container {
+  padding: 10px 25px 5px 25px;
+  background: black;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+}
+
+.blur {
+  -webkit-filter: blur(3px);
+}
+.brightness {
+  -webkit-filter: brightness(5);
+}
+.contrast {
+  -webkit-filter: contrast(8);
+}
+.hue-rotate {
+  -webkit-filter: hue-rotate(90deg);
+}
+.hue-rotate2 {
+  -webkit-filter: hue-rotate(180deg);
+}
+.hue-rotate3 {
+  -webkit-filter: hue-rotate(270deg);
+}
+.saturate {
+  -webkit-filter: saturate(10);
+}
+.grayscale {
+  -webkit-filter: grayscale(1);
+}
+.sepia {
+  -webkit-filter: sepia(1);
+}
+.invert {
+  -webkit-filter: invert(1)
+}
+</style>
+</head>
+<body>
+
+
+
+  <div class="container"><span id="live">LIVE</span>
+  <video id="monitor" autoplay onclick="changeFilter(this)" title="Click me to see different filters"></video></div>
+  <p>Click the video to see different CSS filters</p>
+ <p><button onclick="init(this)">Capture</button></p>
+ <div id="splash">
+  <p id="errorMessage">&uarr;<br>Click to begin</p>
+ </div>
+ <div id="gallery"></div>
+
+<canvas id="photo" height='480px' width='640px'></canvas>
+<script>
+var app = document.getElementById('app');
+var video = document.getElementById('monitor');
+var canvas = document.getElementById('photo');
+var effect = document.getElementById('effect');
+var gallery = document.getElementById('gallery');
+var ctx = canvas.getContext('2d');
+var intervalId = null;
+var idx = 0;
+var filters = [
+  'grayscale',
+  'sepia',
+  'blur',
+  'brightness',
+  'contrast',
+  'hue-rotate', 'hue-rotate2', 'hue-rotate3',
+  'saturate',
+  'invert',
+  ''
+];
+
+if ( typeof navigator.mozGetUserMedia !== 'undefined' ) {
+	navigator.getUserMedia = navigator.mozGetUserMedia;
+} else if ( typeof navigator.webkitGetUserMedia !== 'undefined' ) {
+	navigator.getUserMedia = navigator.webkitGetUserMedia;
+} else if ( typeof navigator.getUserMedia === 'undefined' ) {
+	throw 'Not working in this browser, no navigator.getUserMedia variant';
+}
+
+function changeFilter(el) {
+  el.className = '';
+  var effect = filters[idx++ % filters.length];
+  if (effect) {
+    el.classList.add(effect);
+  }
+}
+
+function gotStream(stream) {
+   video.src = window.URL.createObjectURL(stream);
+
+
+  video.onerror = function(e) {
+    stream.stop();
+  };
+
+  stream.onended = noStream;
+
+}
+
+function noStream(e) {
+  var msg = 'No camera available.';
+  if (e.code == 1) {
+    msg = 'User denied access to use camera.';
+  }
+  document.getElementById('errorMessage').textContent = msg;
+}
+
+function capture() {
+
+    ctx.drawImage(video, 0, 0);
+/*
+var i = new Image();
+console.log( canvas.toDataURL( "image/jpeg",1.0));
+i.src=canvas.toDataURL("image/jpeg",1.0);
+gallery.appendChild(i);
+*/
+    
+    var img = document.createElement('img');
+    img.src = canvas.toDataURL();
+
+    var angle = Math.floor(Math.random() * 36);
+    var sign = Math.floor(Math.random() * 2) ? 1 : -1;
+    img.style.webkitTransform = 'rotateZ(' + (sign * angle) + 'deg)';
+
+    var maxLeft = document.body.clientWidth;
+    var maxTop = document.body.clientHeight;
+
+    img.style.top = Math.floor(Math.random() * maxTop) + 'px';
+    img.style.left = Math.floor(Math.random() * maxLeft) + 'px';
+	img.style.border = '1px black solid';
+    gallery.appendChild(img);
+    /*
+
+	
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+    return;
+  }
+
+  intervalId = setInterval(function() {
+    ctx.drawImage(video, 0, 0);
+    var img = document.createElement('img');
+    img.src = canvas.toDataURL();
+
+    var angle = Math.floor(Math.random() * 36);
+    var sign = Math.floor(Math.random() * 2) ? 1 : -1;
+    img.style.webkitTransform = 'rotateZ(' + (sign * angle) + 'deg)';
+
+    var maxLeft = document.body.clientWidth;
+    var maxTop = document.body.clientHeight;
+
+    img.style.top = Math.floor(Math.random() * maxTop) + 'px';
+    img.style.left = Math.floor(Math.random() * maxLeft) + 'px';
+
+    gallery.appendChild(img);
+  }, 400);
+    */
+}
+
+function init(el) {
+  if (!navigator.getUserMedia) {
+    document.getElementById('errorMessage').innerHTML = 'Sorry. <code>navigator.getUserMedia()</code> is not available.';
+    return;
+  }
+  el.onclick = capture;
+  el.textContent = 'Snapshot';
+  navigator.getUserMedia({video: true}, gotStream, noStream);
+}
+
+window.addEventListener('keydown', function(e) {
+  if (e.keyCode == 27) { // ESC
+    document.querySelector('details').open = false;
+  }
+}, false);
+</script>
+
+
+</body>
+</html>
